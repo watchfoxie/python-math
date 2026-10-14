@@ -1,0 +1,41 @@
+Minimum Variance Portfolio
+
+A portfolio over n assets holds fractions w1, ..., wn of the initial capital, with short selling allowed, so weights may be negative; the only hard restriction on the weights is that they sum to 1. The assets have expected returns mu_1, ..., mu_n and a covariance matrix S, n by n, symmetric and positive definite.
+
+The investor wants the portfolio of minimum variance w' S w that achieves a prescribed expected return r*: minimize w' S w subject to sum w_i = 1 and sum w_i mu_i = r*.
+
+The Lagrange conditions turn this into a single linear system:
+[ 2S 1 mu ] [ w ] [ 0  ]
+[ 1' 0 0 ] [ l1 ] = [ 1 ]
+[ mu' 0 0 ] [ l2 ] [ r* ]
+
+with 1 the column of ones and l1, l2 the two multipliers; solve it for w, l1, l2 at once (numpy.linalg.solve, for instance). The system is guaranteed non-singular for the given inputs.
+
+Input:
+Line 1: n (2 <= n <= 20).
+Line 2: n real numbers, the expected returns mu_1, ..., mu_n.
+Next n lines: n real numbers each, the covariance matrix S.
+Last line: the target return r*, chosen so that the system is solvable.
+
+Output:
+Three lines, each value with six decimals:
+line 1: the n weights w1, ..., wn, separated by spaces;
+line 2: the variance w' S w of the portfolio;
+line 3: the volatility, the square root of the variance.
+
+Examples
+
+Example 1:
+input:
+2
+0.10 0.02
+0.04 0.0
+0.0 0.01
+0.06
+
+output:
+0.500000 0.500000
+0.012500
+0.111803
+
+Remarks: With only two assets the two equality constraints alone pin the weights down; from three assets upwards the covariance matrix does the steering, which is the whole point of the method.

@@ -1,0 +1,48 @@
+Convex Hull of Planar Points
+
+Given a set of points in the plane, find the vertices of its convex hull with Andrew's monotone chain algorithm: sort the points, then build the lower and the upper hull with a stack, popping while the last three points on the stack make a non-left turn. Points that lie on the edge of the hull but are not corners are not vertices and must not appear in the answer.
+
+Input:
+Line 1: m, the number of points (3 <= m <= 10^5). Next m lines: the coordinates x and y of one point each, real numbers. Duplicate points may occur and count once. The points are guaranteed not to be all collinear.
+
+Output:
+Line 1: h, the number of hull vertices. Next h lines: the vertices, one per line, in counterclockwise order, starting from the point with the smallest x coordinate, ties broken by
+the smallest y. Print coordinates without trailing zeros: 3, not 3.0; 2.5, not 2.500000.
+Last line: the perimeter of the hull with six decimals, the closing edge back to the starting vertex included.
+
+Examples
+
+Example 1:
+input:
+5
+0 0
+3 0
+3 3
+0 3
+1 1
+
+output:
+4
+0 0
+3 0
+3 3
+0 3
+12.000000
+
+Example 2:
+input:
+5
+0 0
+2 0
+4 0
+4 4
+0 4
+
+output:
+4
+0 0
+4 0
+4 4
+0 4
+16.000000
+The point (2, 0) lies on the bottom edge, so it is not a vertex.

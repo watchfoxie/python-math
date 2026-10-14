@@ -1,0 +1,35 @@
+Two-SAT Solver
+
+A 2-CNF formula has n Boolean variables x1, ..., xn and m clauses, each clause a disjunction of exactly two literals, like (x1 or not x2). Decide whether the formula is satisfiable and, if it is, print a satisfying assignment. The standard route: build the implication graph with two nodes per variable, one per literal, and an edge for each implicit implication, since (a or b) entails (not a -> b) and (not b -> a); then find the strongly connected components. The formula is satisfiable exactly when no variable shares a component with its own negation. A satisfying assignment follows from the component order in the condensation.
+
+Input:
+Line 1: n and m (1 <= n <= 10^5, 1 <= m <= 10^5).
+Next m lines: two integers i and j per line, the two literals of one clause. A positive integer i stands for the variable x_i, a negative one for its negation. The two literals of a clause may be equal, and clauses may repeat.
+
+Output:
+If the formula is unsatisfiable, print "unsatisfiable" and stop. Otherwise print "satisfiable" on the first line and, on the second line, n values separated by spaces: 1 if x_i is true in the assignment, 0 if false. Any satisfying assignment is accepted.
+
+Examples
+
+Example 1:
+input:
+2 4
+1 2
+-1 2
+1 -2
+-1 -2
+
+output:
+unsatisfiable
+Whichever values x1 and x2 take, one of the four clauses fails.
+
+Example 2:
+input:
+2 2
+1 -2
+-1 2
+
+output:
+satisfiable
+1 1
+Here x1 and x2 must be equal; both true is one valid solution.

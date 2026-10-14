@@ -1,0 +1,36 @@
+Bracket Combinations
+
+A string made only of the characters '(' and ')' is called balanced if, while reading it from left to right, the running count of '(' is never below the running count of ')', and the two totals are equal at the end. The empty string is balanced by convention. So "()()" and "(())" are balanced, while "())(" and ")(" are not.
+
+The task: given an integer n, the number of pairs of parentheses, count how many distinct balanced strings can be written with exactly n '(' characters and n ')' characters.
+
+Input: A single line containing the integer n, with 0 <= n <= 500.
+
+Output: A single line containing the count, as an integer.
+
+Examples
+
+Example 1:
+input:
+3
+
+output:
+5
+The five strings are ()()(), ()(()), (())(), (()()) and ((())).
+
+Example 2:
+input:
+0
+
+output:
+1
+Only the empty string.
+
+Example 3:
+input:
+19
+
+output:
+1767263190
+
+Remarks: The answer is the n-th Catalan number, computable in closed form as (2n choose n) / (n + 1), always an integer. Enumerating the strings one by one is hopeless: for n = 19 there are already more than 1.7 billion of them, so the program is expected to answer well within a second for the largest allowed n.

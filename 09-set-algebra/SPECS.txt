@@ -1,0 +1,45 @@
+Set Algebra with Three Sets
+
+Read three sets of words, A, B and C, given as lines of whitespace separated tokens, and report a few standard set quantities, ending with a check of the inclusion-exclusion principle for cardinalities: |A u B u C| = |A| + |B| + |C| - |A n B| - |A n C| - |B n C| + |A n B n C|
+
+A word is either in a set or not, so repeated tokens on a line count once. The comparison of the two sides is part of the output: the program must say whether they agree.
+
+Input:
+Three lines: line 1 holds the tokens of A, line 2 those of B, line 3 those of C. A line may be empty, meaning the corresponding set is empty.
+
+Output:
+Five lines, in this order:
+"union k e1 e2 ..." the union of the three sets, elements sorted lexicographically (ASCII order), the count first;
+"intersection k e1 ..." the set A n B n C, same conventions;
+"inclusion-exclusion v" the right hand side of the identity above;
+"direct v" the cardinality |A u B u C| counted directly;
+"agree" or "disagree" whether the two previous lines match.
+
+Examples
+
+Example 1:
+input:
+red green blue
+green blue yellow
+blue white
+
+output:
+union 5 blue green red white yellow
+intersection 1 blue
+inclusion-exclusion 5
+direct 5
+agree
+
+Example 2:
+input:
+apple
+<empty line>
+apple pear
+
+output:
+union 2 apple pear
+intersection 0
+inclusion-exclusion 2
+direct 2
+agree
+Here B is the empty set: the second input line is blank, and the third line holds the tokens of C.

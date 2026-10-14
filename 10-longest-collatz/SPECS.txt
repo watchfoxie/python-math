@@ -1,0 +1,26 @@
+The Longest Collatz Chain
+
+The Collatz iteration maps a positive integer v to v/2 when v is even and to 3v + 1 when v is odd; the long-standing conjecture is that it always reaches 1. The Collatz chain of a starting number k is the sequence obtained by iterating until 1 is reached, 1 included. For k = 6 the chain is 6, 3, 10, 5, 16, 8, 4, 2, 1, of length 9. Among all starting numbers from 1 to a given n, find the one whose chain is the longest, breaking ties towards the smaller starting number. Report also the largest value that appears anywhere on the winning chain.
+
+Input: One line with n (1 <= n <= 10^7).
+
+Output: One line with three integers separated by spaces: the winning starting number, the length of its chain, and the maximum value on that chain.
+
+Examples
+
+Example 1:
+input:
+6
+
+output:
+6 9 16
+
+Example 2:
+input:
+7
+
+output:
+7 17 52
+The chain of 7 climbs up to 52 before falling back to 1.
+
+Remarks: Chains overlap heavily: the chain of 6 runs through 3, whose chain was computed earlier. Memoizing chain lengths and chain maxima for all values up to n and reusing them brings the largest case down to seconds rather than minutes; values above n appear on chains too, but do not need to be memoized, just counted on the fly.

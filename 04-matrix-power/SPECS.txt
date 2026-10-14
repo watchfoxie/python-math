@@ -1,0 +1,41 @@
+Matrix Power
+
+Given a square integer matrix A, a non-negative exponent k and a modulus m, compute A^k (mod m) by binary exponentiation: square the matrix repeatedly and multiply into the result only those powers that correspond to set bits of k. The count of matrix multiplications must be O(log k), never proportional to k. Matrix multiplication is the usual row-by-column product; all arithmetic is integer arithmetic and every entry is reduced modulo m.
+
+Input: One line with n, k and m (1 <= n <= 50, 0 <= k <= 10^18, 1 <= m <= 10^9). Then n lines, each with n integers: the entries of A. Entries may be negative or larger than m.
+
+Output: n lines, each with n integers separated by spaces: the entries of A^k mod m.
+
+Examples
+
+Example 1:
+input:
+2 10 1000000
+1 1
+1 0
+
+output:
+89 55
+55 34
+
+Powers of this matrix carry Fibonacci numbers, a handy way to check the program by hand.
+
+Example 2:
+input:
+3 0 7
+1 2 3
+4 5 6
+7 8 9
+
+output:
+1 0 0
+0 1 0
+0 0 1
+Any matrix to the power 0 is the identity, here taken mod 7.
+
+Example 3:
+input:
+1 5 1000
+3
+
+output: 243

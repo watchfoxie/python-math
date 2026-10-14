@@ -1,0 +1,32 @@
+Counting Primes in a Range
+
+Count the prime numbers between two given bounds L and R, where R can be as large as a trillion. A plain sieve up to R is out of the question; the window itself, however, is short. Use the segmented sieve of Eratosthenes: first find all primes up to the square root of R with an ordinary sieve, then cross out their multiples inside the window [L, R] only.
+
+Input: One line with two integers L and R (1 <= L <= R <= 10^12, R - L <= 10^6).
+
+Output: One line: the number of primes p with L <= p <= R.
+
+Examples
+
+Example 1:
+input:
+1 10
+
+output:
+4
+
+Example 2:
+input:
+100 200
+
+output:
+21
+
+Example 3:
+input:
+1 1
+
+output:
+0
+
+Remarks: Two classic traps: 1 is not a prime, and when a base prime p happens to lie inside the window, p itself must not be crossed out. Start crossing at p*p, or at the smallest multiple of p that is at least L and different from p. With a window of 10^6 numbers near 10^12 the program should still run in a couple of seconds.

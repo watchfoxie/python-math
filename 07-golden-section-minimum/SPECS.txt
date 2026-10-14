@@ -1,0 +1,40 @@
+Minimizing a Unimodal Polynomial
+
+A function is unimodal on an interval [a, b] if it decreases up to a single minimum point and increases afterwards. Given a polynomial that is unimodal on a given interval, find its minimum with the golden section search: keep a bracket [a, b] holding the minimum and two interior probes placed at the golden ratio positions, then discard the part of the bracket that cannot contain the minimum and repeat.
+
+Input:
+Line 1: the degree k of the polynomial (1 <= k <= 6).
+Line 2: k+1 real coefficients, highest power first, so the polynomial is c_k x^k + c_(k-1) x^(k-1) + ... + c_1 x + c_0.
+Line 3: the interval bounds a and b, with a < b.
+The polynomial is guaranteed to be unimodal on [a, b].
+
+Output: Two lines, each with six decimals:
+line 1: the position of the minimum x*;
+line 2: the value of the polynomial at x*.
+Stop shrinking when the bracket width falls below 10^-9, absolute, and report the midpoint of the final bracket.
+
+Examples
+
+Example 1:
+input:
+2
+1 -4 4
+0 5
+
+output:
+2.000000
+0.000000
+The polynomial is (x - 2)^2.
+
+Example 2:
+input:
+4
+1 0 -2 0 0
+0 2
+
+output:
+1.000000
+-1.000000
+The polynomial is x^4 - 2x^2, whose minimum on [0, 2] sits at x = 1.
+
+Remarks: Golden section search evaluates the polynomial only once per iteration, since one probe survives from the previous step. A program that evaluates both probes every time is still correct, just does twice the work.

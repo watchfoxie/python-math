@@ -1,0 +1,41 @@
+Bracket Matcher
+
+A line of text may contain, among other characters, the parentheses '(' and ')'. The parentheses of the line are balanced when every '(' has a matching ')' somewhere later in the line, and no ')' shows up before its match. Characters other than parentheses take no part in this. A line without any parentheses at all counts as balanced. Given the line, print 1 if its parentheses are balanced and 0 otherwise.
+
+Input: A single line: the text to check.
+
+Output: A single line: 1 or 0.
+
+Examples
+
+Example 1:
+input:
+(the quick (brown) fox)
+
+output:
+1
+
+Example 2:
+input:
+(the quick (brown fox
+
+output:
+0
+One '(' is never closed.
+
+Example 3:
+input:
+no parentheses here at all
+
+output:
+1
+
+Example 4:
+input:
+)and(
+
+output:
+0
+A ')' arrives before any '(' could open it.
+
+Remarks: A single counter suffices: the running depth of open parentheses. The line fails the moment the depth would go below zero, and it passes only if the depth is exactly zero at the end. Reading the whole line once, the work is proportional to its length.
